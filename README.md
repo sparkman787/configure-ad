@@ -1,4 +1,4 @@
-# configure-AD
+# Configure-AD
 
 
 <h1>Configuring On-Premise Active Directory using Azure VMs</h1>
@@ -13,28 +13,52 @@ This tutorial outlines the setup of On-Premise Active Directory using Azure VMs.
 
 <h2>Operating Systems Used </h2>
 
-- Windows 11 pro</b> 
+- Windows 11 pro</b>
+- Windows Server 2022 Azure Ed.</b>
+
 
 
 <h2>Steps</h2>
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+  First set up Microsoft VM set to Windows Server not Windows standard OS
+<img src="https://github.com/sparkman787/configure-ad/blob/main/Step1.PNG"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+After this set the Private IP to static, we do NOT want the IP address of the server to change. Here you can adjust IP settings such as name and address if you wish but make sure Static is checked.
+</p>
+<p><img src="https://github.com/sparkman787/configure-ad/blob/main/Step2.PNG"/></p>
+<br />
+
+<p>
+  Change the DNS server to match the newly made server so the client now points to the domain
+<img src="https://github.com/sparkman787/configure-ad/blob/main/Step3.PNG"/>
+</p>
+<p>
+Now we can set up Remote Desktop for non-admin on main client
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+  Set up server onto Windows Server manager, promote our domain (DC-1) as our Domain controller.
+<img src="https://github.com/sparkman787/configure-ad/blob/main/Step4.PNG"/>
+  Set up DSRM Username and Pass.
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+ We need to make a new OU unit inside the active directory
+<img src="https://github.com/sparkman787/configure-ad/blob/main/Step5.PNG"/>
+   <img src="https://github.com/sparkman787/configure-ad/blob/main/Step6.PNG"/>
+  Under domains we should now have seperate folders made for _ADMINS and _EMPLOYEES
+     <img src="https://github.com/sparkman787/configure-ad/blob/main/Step7.PNG"/>
 </p>
 <p>
+
+<p>
+  We can add clients (users) into the domain through DNS 
+<img src="https://github.com/sparkman787/configure-ad/blob/main/Step8.PNG"/>
+ <img src="https://github.com/sparkman787/configure-ad/blob/main/Step9.PNG"/>
+</p>
+<p>
+
